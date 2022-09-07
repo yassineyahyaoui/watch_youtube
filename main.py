@@ -8,9 +8,10 @@ def main():
     #get_videos("FOOT BALL", "UCJvgF5uUL22U7i9tNlPvduA", True)
     with open(os.path.join("data", "FOOT BALL", "videos.csv"), "r") as videos_file:
         content = csv.DictReader(videos_file)
-        for video in content:
-            print(video["Video id"], video["Video duration"][2:-1])
+        for index, video in enumerate(content):
+            print(index, video["Video id"], video["Video duration"])
             watch_videos(video["Video id"], video["Video duration"][2:-1])
+
 
 
 if __name__ == "__main__":
