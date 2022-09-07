@@ -8,12 +8,9 @@ driver = webdriver.Chrome()
 
 
 def watch_videos(video_id, video_duration):
-    print(video_id + " started")
     driver.get("https://www.youtube.com/shorts/" + video_id)
     try:
         driver.find_element(By.CSS_SELECTOR, "button.ytp-large-play-button.ytp-button").click()
-        print("button")
     except:
-        print("no button")
+        pass
     time.sleep(int(video_duration) + 10)
-    print(video_id + " finished")
