@@ -1,6 +1,7 @@
 import csv
 import time
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 
 
 driver = webdriver.Chrome()
@@ -9,5 +10,10 @@ driver = webdriver.Chrome()
 def watch_videos(video_id, video_duration):
     print(video_id + " started")
     driver.get("https://www.youtube.com/shorts/" + video_id)
-    time.sleep(int(video_duration))
+    try:
+        driver.find_element(By.CSS_SELECTOR, "button.ytp-large-play-button.ytp-button").click()
+        print("button")
+    except:
+        print("no button")
+    time.sleep(int(video_duration) + 10)
     print(video_id + " finished")
